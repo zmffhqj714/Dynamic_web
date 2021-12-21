@@ -49,6 +49,10 @@ public class Authenticaion {
 		this.emp.setSlCode(this.req.getParameter("slCode"));
 		this.emp.setSlPassword(this.req.getParameter("mPassword"));
 		this.emp.setLog(9);
+		
+		System.out.println(emp.getSlCode());
+		
+	
 		/*
 		 * 2. DAO 연동 2-1. STORES :: SECODE 존재 여부
 		 * 
@@ -62,8 +66,7 @@ public class Authenticaion {
 		dao = new DataAccessObject();
 		Connection conn = dao.getConnection();
 		dao.modifyTranStatus(conn, false);
-		if (dao.isSeCode(conn, emp)) {
-			
+		if (dao.isSeCode(conn, emp)) {			
 			if (dao.isEmployee(conn, emp)) {
 				if (dao.regAccessHistory(conn, emp)) {
 					if ((list = dao.getAHInfo(conn, emp)) != null) {

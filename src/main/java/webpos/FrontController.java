@@ -13,7 +13,7 @@ import beans.Action;
 import services.auth.Authenticaion;
 
 
-@WebServlet({ "/Access", "/AccessOut" }) // <프론트에서 서버에 날려주는 방식, container(servlet ) 다이나믹인지 확인함
+@WebServlet({ "/Access", "/AccessOut" }) // < 서버에서 날려주고 container(servlet ) 다이나믹인지 확인함
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -55,11 +55,11 @@ public class FrontController extends HttpServlet {
 
 			}
 		
-		if(action.isRedirect()) {// true
+		if(action.isRedirect()) {// true 톰캣에서 아파치 서버로 보내주는 법 2개
 			res.sendRedirect(action.getPage()); 
 		}else {
 			RequestDispatcher dp = req.getRequestDispatcher(action.getPage()); //로그인
-			dp.forward(req,res);
+			dp.forward(req,res); //서버메모리에 있는 setattribute 에 저장된걸 가져옴
 		}
 		}
 

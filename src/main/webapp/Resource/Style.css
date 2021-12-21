@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+
+table {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 52%;
+	border: 3px solid #BDBDBD;
+}
+
+td {
+	text-align: center;
+	padding: 20px;
+}
+
+input {
+	width: 98%;
+	height: 48px;
+	text-align: center;
+	font-size: 15pt;
+	color: #0bc904;
+}
+
+#state {
+	text-align: left;
+	padding-left: 20px;
+}
+
+#lo {
+	font-size: 30px;
+	color: #0bc904;
+}
+
+.lo2 {
+	background-color: #0bc904;
+	color: #ffffff;
+}
