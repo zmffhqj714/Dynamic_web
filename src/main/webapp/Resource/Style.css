@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+body {
+	background-color: #ffffff;
+}
 
 table {
 	position: absolute;

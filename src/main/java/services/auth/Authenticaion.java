@@ -6,12 +6,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import beans.Action;
 import beans.Employee;
 
 //로그인처리 
 public class Authenticaion {
+	HttpSession session;
 	PreparedStatement psmt;
 	private HttpServletRequest req;
 	Employee emp = new Employee();
@@ -32,10 +34,33 @@ public class Authenticaion {
 		case 1:// 로그인
 			action = this.accessCtl();
 			break;
+			
 		case -1:// 로그아웃
 			action = this.accessOutCtl();
 			break;
+		case 0:// 새페이지이동(로그인)
+			action = this.afterAccess();
+			break;
 		default:
+		}
+		return action;
+	}
+
+	private Action afterAccess() {
+		Action action = new Action();
+		ArrayList<Employee> list = null;
+		dao = new DataAccessObject();
+		Connection conn = dao.getConnection();
+		session = this.req.getSession();
+		
+		this.emp = new Employee();
+		this.emp.setSoCode((String)session.getAttribute("soCode"));
+		this.emp.setSlCode((String)session.getAttribute("slCode"));
+		
+		if((list = dao.getAHInfo(conn, emp)) != null) {
+			req.setAttribute("accessInfo", list);
+			action.setRedirect(false);
+			action.setPage("index.jsp");			
 		}
 		return action;
 	}
@@ -44,13 +69,17 @@ public class Authenticaion {
 		Action action = new Action();
 		ArrayList<Employee> list = null;
 		// 데이터를 빈에 담아서 보냄
+		session = this.req.getSession();
+		dao = new DataAccessObject();
+		Connection conn = dao.getConnection();
 		this.emp = new Employee();
 		this.emp.setSoCode(this.req.getParameter("soCode"));
 		this.emp.setSlCode(this.req.getParameter("slCode"));
 		this.emp.setSlPassword(this.req.getParameter("mPassword"));
 		this.emp.setLog(9);
 		
-		System.out.println(emp.getSlCode());
+		
+		
 		
 	
 		/*
@@ -64,13 +93,19 @@ public class Authenticaion {
 		 * *** 로그인 성공 :: main.jsp 로그인 실패 :: index.html
 		 */
 		dao = new DataAccessObject();
-		Connection conn = dao.getConnection();
+		 conn = dao.getConnection();
 		dao.modifyTranStatus(conn, false);
+		
 		if (dao.isSeCode(conn, emp)) {			
 			if (dao.isEmployee(conn, emp)) {
 				if (dao.regAccessHistory(conn, emp)) {
-					if ((list = dao.getAHInfo(conn, emp)) != null) {
-						tran = true;
+					tran = true;
+					
+					session = this.req.getSession();
+					session.setAttribute("soCode", emp.getSoCode());
+					session.setAttribute("slCode", emp.getSlCode());
+					
+					if ((list = dao.getAHInfo(conn, emp)) != null) {				
 						req.setAttribute("accessInfo", list);
 					}else {
 						System.out.println("실패4");
@@ -113,7 +148,9 @@ public class Authenticaion {
 
 		if (dao.regAccessHistory(conn, emp)) {
 			tran = true;
+			session.invalidate();
 		}
+		
 		
 		action.setPage("index.html");
 		action.setRedirect(true);
