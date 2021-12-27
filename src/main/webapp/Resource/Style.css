@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 body {
 	background-color: #ffffff;
 }
@@ -9,7 +10,7 @@ table {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	width: 52%;
+	width: 50%;
 	border: 3px solid #BDBDBD;
 }
 
@@ -24,6 +25,7 @@ input {
 	text-align: center;
 	font-size: 15pt;
 	color: #0bc904;
+	
 }
 
 #state {
@@ -39,4 +41,7 @@ input {
 .lo2 {
 	background-color: #0bc904;
 	color: #ffffff;
+}
+span{
+	margin :5px;
 }

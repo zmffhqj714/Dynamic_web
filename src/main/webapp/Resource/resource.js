@@ -2,6 +2,10 @@
  * 태그를 만들수 있음
  */
 
+  function accessOut(soCode, slCode) {
+         location.href = "AccessOut?soCode=" + soCode + "&slCode=" + slCode;
+      }
+
 function isEmpty(obj) {
 		let check = true;
 		if (obj.value == "") {

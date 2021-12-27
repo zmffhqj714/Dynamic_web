@@ -74,6 +74,7 @@ public class Authenticaion {
 		Connection conn = dao.getConnection();
 		this.emp = new Employee();
 		this.emp.setSoCode(this.req.getParameter("soCode"));
+		System.out.println(emp.getSoCode());
 		this.emp.setSlCode(this.req.getParameter("slCode"));
 		this.emp.setSlPassword(this.req.getParameter("mPassword"));
 		this.emp.setLog(9);
@@ -92,8 +93,7 @@ public class Authenticaion {
 		 * 
 		 * *** 로그인 성공 :: main.jsp 로그인 실패 :: index.html
 		 */
-		dao = new DataAccessObject();
-		 conn = dao.getConnection();
+	
 		dao.modifyTranStatus(conn, false);
 		
 		if (dao.isSeCode(conn, emp)) {			
@@ -136,6 +136,7 @@ public class Authenticaion {
 	private Action accessOutCtl() {
 		Action action = new Action();
 		ArrayList<Employee> list = null;
+		session = this.req.getSession();
 		// 데이터를 빈에 담아서 보냄
 		this.emp = new Employee();
 		this.emp.setSoCode(this.req.getParameter("soCode"));

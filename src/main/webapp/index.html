@@ -2,9 +2,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>static page</title>
-<script src="Resource/resource.js"></script>
+<title>처음화면</title>
 <link rel="stylesheet" type="text/css" href="Resource/Style.css" />
+<script src="Resource/resource.js"></script>
+
 </head>
 <body>
 	<form action="Access" name="login" method="post">
@@ -15,7 +16,6 @@
 			<tr>
 				<td colspan="2"><input type="text" name="soCode"
 					placeholder="매장코드" /></td>
-
 			</tr>
 			<tr>
 				<td colspan="2"><input type="text" name="slCode"
@@ -44,16 +44,16 @@
 	<input type="week" name="obj" />
 	<input type="button" value="값확인" onClick= "valueCheck()" />
 	-->
-	
-	
+</body>
+
 <script>
-	function valueCheck(){
+	function valueCheck() {
 		const obj = document.getElementsByName("obj")[0];
 		alert(obj.value);
-}
+	}
 </script>
 
-	<!--  
+<!--  
 	<form action = "Access" method = "post">
 
 		<input type= "text" name= "soCode" placeholder= "매장코드입력"/>
@@ -65,12 +65,12 @@
 		const form = document.createElement("form");
 	-->
 
-</body>
+
 
 <script>
 	function authentication() {
 		const form = document.getElementsByName("login")[0];
-		const userData = [document.getElementsByName("soCode")[0],
+		const userData = [ document.getElementsByName("soCode")[0],
 				document.getElementsByName("slCode")[0],
 				document.getElementsByName("mPassword")[0] ];
 		const message = [ "상점코드", "직원코드", "패스워드" ];

@@ -1,21 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Main Page :: Dynamic :: AccessInfo</title>
+<title>세일즈페이지</title>
+</head>
+
+
 
 <style>
+body{
+dispaly:flex;
+
+}
 span {
    margin: 5px;
    color: #000000;
    font-size: 12pt;
 }
 
-#top {
+.header {
    text-align: right;
    background-color: #BDBDBD;
+}
+#footer{
+ background-color: #BDBDBD;
 }
 
 #btn {
@@ -72,17 +82,13 @@ span {
 </style>
 </head>
 <body>
-   <div id="top">
-      <span>${accessInfo[0].soName}(${accessInfo[0].soCode})</span> <span>${accessInfo[0].slName}(${accessInfo[0].slCode})</span>
-      <span>최근 접속 일시 : ${accessInfo[0].date}</span> <input type="button"
-         id=btn value="로그아웃"
-         onClick="accessOut('${accessInfo[0].soCode}', '${accessInfo[0].slCode}')" />
-
-   </div>
-   <div id="menuWrap">
-      <div id="management" class="divButton" onClick = "moveServices('ManageMain','${accessInfo[0].soCode}', '${accessInfo[0].slCode}')" onMouseOver = "mouseOver(this)" onMouseOut = "mouseLeave(this)">management</div>
-      <div id="sales" class="divButton" onClick = "moveServices('PosMain','${accessInfo[0].soCode}', '${accessInfo[0].slCode}')" onMouseOver = "mouseOver(this)" onMouseOut = "mouseLeave(this)">sales</div>
-   </div>
+   <div class="header">
+		<span>${accessInfo[0].soName}(${accessInfo[0].soCode})</span> <span>${accessInfo[0].slName}(${accessInfo[0].slCode})</span>
+		<span>최근 접속 일시 : ${accessInfo[0].date}</span> <input type="button"
+			id=btn value="로그아웃"
+			onClick="accessOut('${accessInfo[0].soCode}', '${accessInfo[0].slCode}')" />
+	</div>
+  <div class= footer>조본이만듬</div>
 <script src="Resource/resource.js"></script>
    <script>
     
@@ -104,4 +110,5 @@ span {
       }
    </script>
 </body>
+
 </html>
