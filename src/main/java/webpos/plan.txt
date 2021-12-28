@@ -1,0 +1,47 @@
+/* Managements :: Employee */
+
+
+1. 직원리스트
+   Request    - Action : EmpList       Method : post 
+                     Data : soCode
+                     jobCode : 6
+   Response - File : management.jsp  isRedirect : false
+                     ---------------------------------------------
+                       직원코드     직원성명       근무여부    출근여부
+                     ---------------------------------------------
+                      slCode     slName     slStateCode  slStateName
+                      stCode     stName
+                      --> bean : Employee 
+
+                     
+2-1. 직원정보등록 Form
+    Request - Action : RegEmpForm     Method : post
+             Data   : soCode 
+    Response - File : management.jsp  isRedirect : false
+    
+                         
+2-2. 직원정보등록
+    Request - Action : RegEmp       Method : post
+             Data   : soCode, slCode, slName, slPassword 
+    Response - File  : EmpList        isRedirect : false
+    
+    
+3-1. 직원정보수정 Form
+    Request - Action : ModEmpForm          Method : post
+             Data     : soCode
+                      
+                         
+    Response - File : management.jsp   isRedirect : false
+    ---------------------------------------------
+        직원코드                  직원성명            근무여부          출근여부      패스워드
+        ---------------------------------------------
+         slCode                 slName          Combo:slStateCode, slStateName
+         Combo : stCode,stName  slPassword
+                     --> bean : Employee
+   
+    
+3-2. 직원정보수정
+    Request - Action : ModEmp            Method : post
+              Data   : soCode, slCode, slStateCode, stCode
+    Response - File : EmpList   isRedirect : false
+    

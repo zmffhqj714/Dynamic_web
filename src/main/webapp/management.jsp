@@ -74,7 +74,7 @@ align-items: flex-end;
 					<article class="managements">
 						<p class="menuTitle">직원관리</p>
 						<div class="items">
-							<p>직원리스트</p> <!-- 전체 직원 리스트, 직원별 검색 -->
+							<p><span onClick="getEmpList('${accessInfo[0].soCode}')">직원리스트</span></p> <!-- 전체 직원 리스트, 직원별 검색 -->
 							<p>직원정보등록</p> <!-- 개별 직원 등록 -->
 							<p>직원정보수정</p> <!-- 개별 직원 정보 수정(상태 정보 수정) -->
 						</div>
@@ -98,13 +98,33 @@ align-items: flex-end;
 				</section>
 			</div>
 		</div> 
-		<div id="contents"><span>contents</span></div> 
+		<div id="contents">
+		<br>
+		<br>
+		<br>
+			<div>${list}</div>
+		</div> 
 		<div id="footer"><span>Designed By 본본</span></div> 
 	</div>
 
 </body>
 <script src="Resource/resource.js"></script>
 <script>
+function modEmp(soCode, slCode){
+	alert(soCode + " : " + slCode);
+}
+
+
+function getEmpList(soCode){
+	const form = makeForm("","EmpList","post");
+	const input = makeInputElement("hidden", "soCode", soCode, "");
+	form.appendChild(input);
+	
+	document.body.appendChild(form);
+	form.submit();
+}
+
+
 let menuZone = document.getElementsByClassName("managements");
 let menuTitle = document.getElementsByClassName("menuTitle");
 let menuItems = document.getElementsByClassName("items");
@@ -126,9 +146,9 @@ function activateItems(){
 	}
 	const activeItems = document.querySelector(".managements.Active .items");
 	
-	
+	if(activeItems != null){
 	activeItems.style.display = "block";
-	
+	}
 }
 	activateItems();
 </script>

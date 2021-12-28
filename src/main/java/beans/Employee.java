@@ -6,17 +6,52 @@ public class Employee {
 	
 	private String slCode; // 직원
 	private String slName;
+	
+	private String slStateCode;
+	private String slStateName;
+	private int stCode;
+	
+	private String todayInfo;
+	
+	
+	private String stName;
 	private String slPassword;
 	private String date;
-	private int log;
 	
-	public int getLog() {
-		return log;
+	public String getTodayInfo() {
+		return todayInfo;
 	}
-	public void setLog(int log) {
-		this.log = log;
+	public void setTodayInfo(String todayInfo) {
+		this.todayInfo = todayInfo;
+	}
+
+	public int getStCode() {
+		return stCode;
+	}
+	public void setStCode(int stCode) {
+		this.stCode = stCode;
 	}
 	
+	
+	public String getSlStateCode() {
+		return slStateCode;
+	}
+	public void setSlStateCode(String slStateCode) {
+		this.slStateCode = slStateCode;
+	}
+	public String getSlStateName() {
+		return slStateName;
+	}
+	public void setSlStateName(String slStateName) {
+		this.slStateName = slStateName;
+	}
+	
+	public String getStName() {
+		return stName;
+	}
+	public void setStName(String stName) {
+		this.stName = stName;
+	}
 	public String getSoName() {
 		return soName;
 	}

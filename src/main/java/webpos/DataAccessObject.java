@@ -73,7 +73,7 @@ public class DataAccessObject  {
 			this.pstmt = connection.prepareStatement(query);
 			this.pstmt.setNString(1, emp.getSoCode());
 			this.pstmt.setNString(2, emp.getSlCode());
-			this.pstmt.setInt(3, emp.getLog());
+			this.pstmt.setInt(3, emp.getStCode());
 
 			result = this.convertToBoolean(pstmt.executeUpdate());
 

@@ -24,7 +24,7 @@ public class Authenticaion {
 
 	public Authenticaion(HttpServletRequest req) {
 		this.req = req;
-
+		
 	}
 
 	public Action backController(int jobCode) {
@@ -46,7 +46,7 @@ public class Authenticaion {
 		return action;
 	}
 
-	private Action afterAccess() {
+	public Action afterAccess() {
 		Action action = new Action();
 		ArrayList<Employee> list = null;
 		dao = new DataAccessObject();
@@ -77,7 +77,7 @@ public class Authenticaion {
 		System.out.println(emp.getSoCode());
 		this.emp.setSlCode(this.req.getParameter("slCode"));
 		this.emp.setSlPassword(this.req.getParameter("mPassword"));
-		this.emp.setLog(9);
+		this.emp.setStCode(2);
 		
 		
 		
@@ -141,7 +141,7 @@ public class Authenticaion {
 		this.emp = new Employee();
 		this.emp.setSoCode(this.req.getParameter("soCode"));
 		this.emp.setSlCode(this.req.getParameter("slCode"));
-		this.emp.setLog(-9);
+		this.emp.setStCode(-9);
 
 		dao = new DataAccessObject();
 		Connection conn = dao.getConnection();
